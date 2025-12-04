@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Book;
+use App\Models\Member;
+use App\Observers\BookObserver;
+use App\Observers\MemberObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Book::observe(BookObserver::class);
+        Member::observe(MemberObserver::class);
     }
 }
